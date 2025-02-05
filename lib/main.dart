@@ -1,3 +1,4 @@
+import 'package:disenos_app/src/pages/pinteres_page.dart';
 import 'package:disenos_app/src/pages/slideshow_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Diseños App',
-      home: SlideshowPage(),
+      home: PinteresPage(),
     );
   }
 }
