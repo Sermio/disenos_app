@@ -6,7 +6,7 @@ class AnimacionesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: CuadradoAnimado(),
       ),
@@ -35,15 +35,17 @@ class _CuadradoAnimadoState extends State<CuadradoAnimado>
 
   @override
   void initState() {
-    controller = new AnimationController(
-        vsync: this, duration: Duration(milliseconds: 4000));
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 4000));
     rotacion = Tween(begin: 0.0, end: 2 * Math.pi)
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
 
     opacidad = Tween(begin: 0.1, end: 1.0).animate(CurvedAnimation(
-        parent: controller, curve: Interval(0, 0.25, curve: Curves.easeOut)));
+        parent: controller,
+        curve: const Interval(0, 0.25, curve: Curves.easeOut)));
     opacidadOut = Tween(begin: 0.1, end: 1.0).animate(CurvedAnimation(
-        parent: controller, curve: Interval(0.75, 1, curve: Curves.easeOut)));
+        parent: controller,
+        curve: const Interval(0.75, 1, curve: Curves.easeOut)));
     moverDerecha = Tween(begin: 0.0, end: 200.0)
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
     agrandar = Tween(begin: 0.0, end: 2.0)
@@ -92,7 +94,7 @@ class _Rectangulo extends StatelessWidget {
     return Container(
       width: 70,
       height: 70,
-      decoration: BoxDecoration(color: Colors.blue),
+      decoration: const BoxDecoration(color: Colors.blue),
     );
   }
 }

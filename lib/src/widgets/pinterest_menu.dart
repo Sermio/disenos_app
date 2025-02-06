@@ -9,8 +9,9 @@ class PinterestButton {
 }
 
 class PinterestMenu extends StatelessWidget {
-  PinterestMenu(
-      {this.mostrar = true,
+  const PinterestMenu(
+      {super.key,
+      this.mostrar = true,
       this.backgroundColor = Colors.white,
       this.activeColor = Colors.black,
       this.inactiveColor = Colors.blueGrey,
@@ -48,16 +49,15 @@ class PinterestMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => new _MenuModel(),
+      create: (_) => _MenuModel(),
       child: AnimatedOpacity(
-        duration: Duration(milliseconds: 250),
+        duration: const Duration(milliseconds: 250),
         opacity: mostrar ? 1 : 0,
         child: Builder(
           builder: (context) {
-            Provider.of<_MenuModel>(context).backgroundColor =
-                this.backgroundColor;
-            Provider.of<_MenuModel>(context).activeColor = this.activeColor;
-            Provider.of<_MenuModel>(context).inactiveColor = this.inactiveColor;
+            Provider.of<_MenuModel>(context).backgroundColor = backgroundColor;
+            Provider.of<_MenuModel>(context).activeColor = activeColor;
+            Provider.of<_MenuModel>(context).inactiveColor = inactiveColor;
             return _PinterestMenuBackground(
               child: _MenuItems(items),
             );
@@ -78,17 +78,17 @@ class _PinterestMenuBackground extends StatelessWidget {
     final backgroundColor = Provider.of<_MenuModel>(context).backgroundColor;
 
     return Container(
-      child: child,
       width: 250,
       height: 60,
       decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(100),
           ),
-          boxShadow: <BoxShadow>[
+          boxShadow: const <BoxShadow>[
             BoxShadow(color: Colors.black38, blurRadius: 10, spreadRadius: -5)
           ]),
+      child: child,
     );
   }
 }
@@ -148,9 +148,9 @@ class _MenuModel with ChangeNotifier {
   Color activeColor = Colors.black;
   Color inactiveColor = Colors.blueGrey;
 
-  int get itemSeleccionado => this._itemSeleccionado;
+  int get itemSeleccionado => _itemSeleccionado;
   set itemSeleccionado(int index) {
-    this._itemSeleccionado = index;
+    _itemSeleccionado = index;
     notifyListeners();
   }
 }

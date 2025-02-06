@@ -5,7 +5,7 @@ class CuadradoAnimadoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(child: _CuadradoAnimado()),
     );
   }
@@ -31,23 +31,24 @@ class _CuadradoAnimadoState extends State<_CuadradoAnimado>
 
   @override
   void initState() {
-    controller = new AnimationController(
-        vsync: this, duration: Duration(milliseconds: 4500));
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 4500));
 
     moverDr = Tween(begin: 0.10, end: 100.0).animate(CurvedAnimation(
-        parent: controller, curve: Interval(0, 0.25, curve: Curves.bounceOut)));
+        parent: controller,
+        curve: const Interval(0, 0.25, curve: Curves.bounceOut)));
 
     moverAr = Tween(begin: 0.10, end: -100.0).animate(CurvedAnimation(
         parent: controller,
-        curve: Interval(0.25, 0.5, curve: Curves.bounceOut)));
+        curve: const Interval(0.25, 0.5, curve: Curves.bounceOut)));
 
     moverIz = Tween(begin: 0.10, end: -100.0).animate(CurvedAnimation(
         parent: controller,
-        curve: Interval(0.5, 0.75, curve: Curves.bounceOut)));
+        curve: const Interval(0.5, 0.75, curve: Curves.bounceOut)));
 
     moverAb = Tween(begin: 0.10, end: 100.0).animate(CurvedAnimation(
         parent: controller,
-        curve: Interval(0.75, 1.0, curve: Curves.bounceOut)));
+        curve: const Interval(0.75, 1.0, curve: Curves.bounceOut)));
 
     controller.addListener(() {
       if (controller.status == AnimationStatus.completed) {
@@ -88,7 +89,7 @@ class _Rectangulo extends StatelessWidget {
     return Container(
       width: 70,
       height: 70,
-      decoration: BoxDecoration(color: Colors.blue),
+      decoration: const BoxDecoration(color: Colors.blue),
     );
   }
 }

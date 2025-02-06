@@ -22,7 +22,7 @@ class _GraficasCircularesPageState extends State<GraficasCircularesPage> {
             }
           });
         },
-        child: Icon(Icons.refresh),
+        child: const Icon(Icons.refresh),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +59,7 @@ class CustomRadialProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 180,
       height: 180,
       child: RadialProgress(

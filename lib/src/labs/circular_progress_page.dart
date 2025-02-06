@@ -18,8 +18,8 @@ class _CircularProgressPageState extends State<CircularProgressPage>
 
   @override
   void initState() {
-    controller = new AnimationController(
-        vsync: this, duration: Duration(milliseconds: 800));
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 800));
     controller.addListener(() {
       setState(() {
         porcentaje =
@@ -31,7 +31,6 @@ class _CircularProgressPageState extends State<CircularProgressPage>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     controller.dispose();
     super.dispose();
   }
@@ -40,7 +39,6 @@ class _CircularProgressPageState extends State<CircularProgressPage>
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.refresh),
           backgroundColor: Colors.pink,
           onPressed: () {
             porcentaje = nuevoPorcentaje;
@@ -52,10 +50,11 @@ class _CircularProgressPageState extends State<CircularProgressPage>
 
             controller.forward(from: 0.0);
             setState(() {});
-          }),
+          },
+          child: const Icon(Icons.refresh)),
       body: Center(
         child: Container(
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           width: 300,
           height: 300,
           // color: Colors.red,
@@ -75,18 +74,18 @@ class _MiRadialProgress extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = new Paint()
+    final paint = Paint()
       ..strokeWidth = 4
       ..color = Colors.grey
       ..style = PaintingStyle.stroke;
 
-    final Offset center = new Offset(size.width * 0.5, size.height * 0.5);
+    final Offset center = Offset(size.width * 0.5, size.height * 0.5);
     final double radio = min(size.width * 0.5, size.height * 0.5);
 
     canvas.drawCircle(center, radio, paint);
 
     //arco
-    final paintArco = new Paint()
+    final paintArco = Paint()
       ..strokeWidth = 10
       ..color = Colors.pink
       ..style = PaintingStyle.stroke;

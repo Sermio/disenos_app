@@ -9,8 +9,8 @@ class SlideshowPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => new SliderModel(),
-      child: Scaffold(
+      create: (_) => SliderModel(),
+      child: const Scaffold(
         body: Center(
           child: Column(
             children: [Expanded(child: _Slides()), _Dots()],
@@ -26,7 +26,7 @@ class _Dots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       width: double.infinity,
       height: 70,
       child: Row(
@@ -47,10 +47,10 @@ class _Dot extends StatelessWidget {
     final pageViewIndex = Provider.of<SliderModel>(context).currentPage;
 
     return AnimatedContainer(
-      duration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 200),
       width: 12,
       height: 12,
-      margin: EdgeInsets.symmetric(horizontal: 5),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
           color: (pageViewIndex >= index - 0.5 && pageViewIndex < index + 0.5)
               ? Colors.blue
@@ -68,14 +68,12 @@ class _Slides extends StatefulWidget {
 }
 
 class _SlidesState extends State<_Slides> {
-  final pageViewController = new PageController();
+  final pageViewController = PageController();
 
   @override
   void initState() {
-    // TODO: implement initState
     pageViewController.addListener(
       () {
-        print('pagina: ${pageViewController.page}');
         Provider.of<SliderModel>(context, listen: false).currentPage =
             pageViewController.page!;
       },
@@ -85,7 +83,6 @@ class _SlidesState extends State<_Slides> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     pageViewController.dispose();
     super.dispose();
   }
@@ -95,7 +92,7 @@ class _SlidesState extends State<_Slides> {
     return Container(
       child: PageView(
         controller: pageViewController,
-        children: [
+        children: const [
           _Slide('assets/svgs/slide-1.svg'),
           _Slide('assets/svgs/slide-2.svg'),
           _Slide('assets/svgs/slide-3.svg'),
@@ -115,7 +112,7 @@ class _Slide extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: SvgPicture.asset(svg),
     );
   }

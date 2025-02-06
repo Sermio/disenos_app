@@ -9,11 +9,11 @@ class PinteresPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => new _MenuModel(),
+      create: (_) => _MenuModel(),
       child: Scaffold(
         body: Stack(
           children: [
-            PinterestGrid(),
+            const PinterestGrid(),
             _PinterestMenuLocation(),
           ],
         ),
@@ -35,7 +35,7 @@ class _PinterestMenuLocation extends StatelessWidget {
 
     return Positioned(
         bottom: 30,
-        child: Container(
+        child: SizedBox(
           width: widthPantalla,
           child: Align(
             child: PinterestMenu(
@@ -72,6 +72,8 @@ class _PinterestMenuLocation extends StatelessWidget {
 }
 
 class PinterestGrid extends StatefulWidget {
+  const PinterestGrid({super.key});
+
   @override
   State<PinterestGrid> createState() => _PinterestGridState();
 }
@@ -82,7 +84,7 @@ class _PinterestGridState extends State<PinterestGrid> {
     (index) => index,
   );
 
-  ScrollController controller = new ScrollController();
+  ScrollController controller = ScrollController();
   double scrollAnterior = 0;
 
   @override
@@ -108,13 +110,13 @@ class _PinterestGridState extends State<PinterestGrid> {
 
   @override
   Widget build(BuildContext context) {
-    return new StaggeredGridView.countBuilder(
+    return StaggeredGridView.countBuilder(
       controller: controller,
       crossAxisCount: 4,
       itemCount: items.length,
       itemBuilder: (context, index) => _PinteresItem(index),
       staggeredTileBuilder: (index) =>
-          new StaggeredTile.count(2, index.isEven ? 2 : 3),
+          StaggeredTile.count(2, index.isEven ? 2 : 3),
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
     );
@@ -129,14 +131,14 @@ class _PinteresItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.all(5),
+      decoration: const BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.all(Radius.circular(30))),
-      child: new Center(
+      child: Center(
         child: CircleAvatar(
           backgroundColor: Colors.white,
-          child: new Text('$index'),
+          child: Text('$index'),
         ),
       ),
     );
@@ -146,9 +148,9 @@ class _PinteresItem extends StatelessWidget {
 class _MenuModel with ChangeNotifier {
   bool _mostrar = true;
 
-  bool get mostrar => this._mostrar;
+  bool get mostrar => _mostrar;
   set mostrar(bool valor) {
-    this._mostrar = valor;
+    _mostrar = valor;
     notifyListeners();
   }
 }
