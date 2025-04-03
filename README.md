@@ -34,3 +34,10 @@ Progress bars, Pinterest design and Sliver list
   <img src="https://github.com/user-attachments/assets/26b4394b-68a6-47cf-a3cf-3b54b7c63a7a" alt="Registro 2" width="200" hspace="30"/>
 </div>
 
+
+## Special Thanks
+
+This app was developed as part of a course by **Fernando Herrera**. I would like to express my gratitude to Fernando for providing such insightful and educational content.
+
+You can check out Fernando's work and courses on his [GitHub](https://github.com/klerith).
+
